@@ -1,7 +1,6 @@
 package com.frg.eventmanager.infrastructure.adapter.api;
 
 import com.frg.eventmanager.application.port.in.AuthUseCase;
-import com.frg.eventmanager.infrastructure.adapter.auth.request.RegisterRequest;
 import com.frg.eventmanager.infrastructure.adapter.auth.request.LoginRequest;
 import com.frg.eventmanager.infrastructure.adapter.auth.request.TokenResponse;
 import jakarta.validation.Valid;
@@ -20,18 +19,10 @@ public class AuthController {
 
     private final AuthUseCase authUseCase;
 
-    @PostMapping("/register")
-    public Mono<ResponseEntity<Void>> register(@RequestBody @Valid RegisterRequest registerRequest) {
-
-        return authUseCase.register(registerRequest.username(), registerRequest.email(), registerRequest.password())
-                .thenReturn(ResponseEntity.ok().build());
-    }
-
     @PostMapping("/login")
     public Mono<ResponseEntity<TokenResponse>> login(@RequestBody @Valid LoginRequest loginRequest) {
 
-        return authUseCase.login(loginRequest.username(), loginRequest.password())
-                .map(TokenResponse::new)
+        return authUseCase.login(loginRequest.email(), loginRequest.password())
                 .map(ResponseEntity::ok);
     }
 
