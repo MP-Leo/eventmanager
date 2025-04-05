@@ -1,4 +1,4 @@
-package com.frg.eventmanager.infrastructure.adapter.auth.request;
+package com.frg.eventmanager.adapter.controller.dto.response;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

@@ -2,7 +2,7 @@ package com.frg.eventmanager.application.service;
 
 import com.frg.eventmanager.application.port.in.AuthUseCase;
 import com.frg.eventmanager.domain.repository.UserRepository;
-import com.frg.eventmanager.infrastructure.adapter.auth.request.TokenResponse;
+import com.frg.eventmanager.adapter.controller.dto.response.TokenResponse;
 import com.frg.eventmanager.infrastructure.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +17,8 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class AuthService implements AuthUseCase {
 
-    private final UserRepository userRepository;
     private final JwtUtil jwtUtil;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Override

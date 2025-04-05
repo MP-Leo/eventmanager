@@ -15,14 +15,23 @@ public class Event {
     private EventStatus status;
     private int capacity;
 
-    public Event(UUID id, String title, String description, LocalDateTime eventDate, LocalDateTime createdAt, EventStatus status, int capacity) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.eventDate = eventDate;
-        this.createdAt = createdAt;
-        this.status = status;
-        this.capacity = capacity;
+    private UUID creatorId;
+    private String creatorName;
+
+    public Event(UUID id, String title, String description, LocalDateTime eventDate, LocalDateTime createdAt, EventStatus status, int capacity, UUID creatorId, String creatorName) {
+            this.id = id;
+            this.title = title;
+            this.description = description;
+            this.eventDate = eventDate;
+            this.createdAt = createdAt;
+            this.status = status;
+            this.capacity = capacity;
+            this.creatorId = creatorId;
+            this.creatorName = creatorName;
+    }
+
+    public Event(){
+
     }
 
     public UUID getId() {
@@ -45,6 +54,13 @@ public class Event {
     }
     public int getCapacity() {
         return capacity;
+    }
+
+    public UUID getCreatorId() {
+        return creatorId;
+    }
+    public String getCreatorName() {
+        return creatorName;
     }
 
     public void cancelEvent() {

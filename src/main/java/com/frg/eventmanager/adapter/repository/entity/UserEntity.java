@@ -1,4 +1,4 @@
-package com.frg.eventmanager.infrastructure.adapter.repository.entity;
+package com.frg.eventmanager.adapter.repository.entity;
 
 import com.frg.eventmanager.domain.entity.User;
 import com.frg.eventmanager.domain.enums.UserRole;
@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
@@ -18,11 +19,22 @@ import java.util.UUID;
 public class UserEntity {
 
     @Id
+    @Column("user_id")
     private UUID id;
+
+    @Column("name")
     private String name;
+
+    @Column("email")
     private String email;
+
+    @Column("password")
     private String password;
+
+    @Column("role")
     private UserRole role;
+
+    @Column("created_at")
     private LocalDateTime createdAt;
 
 

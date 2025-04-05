@@ -1,8 +1,8 @@
-package com.frg.eventmanager.infrastructure.adapter.api;
+package com.frg.eventmanager.adapter.controller;
 
 import com.frg.eventmanager.application.port.in.AuthUseCase;
-import com.frg.eventmanager.infrastructure.adapter.auth.request.LoginRequest;
-import com.frg.eventmanager.infrastructure.adapter.auth.request.TokenResponse;
+import com.frg.eventmanager.adapter.controller.dto.request.LoginRequest;
+import com.frg.eventmanager.adapter.controller.dto.response.TokenResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

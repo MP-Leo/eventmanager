@@ -15,7 +15,7 @@ spring:
       data-locations: classpath:data.sql
 
 jwt:
-  secret: JWTKeyTest123456!
+  secret: YvF7p2Xk49ZdQ83nWmLuR5vM0sHjL1aZ
   expiration: 3600000
 
 logging:

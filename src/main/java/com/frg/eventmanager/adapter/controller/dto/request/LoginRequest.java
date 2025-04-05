@@ -1,4 +1,4 @@
-package com.frg.eventmanager.infrastructure.adapter.auth.request;
+package com.frg.eventmanager.adapter.controller.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -1,8 +1,11 @@
 package com.frg.eventmanager.infrastructure.config;
 
+import com.frg.eventmanager.infrastructure.security.JwtContextRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,10 +18,14 @@ import javax.crypto.spec.SecretKeySpec;
 
 @Configuration
 @EnableWebFluxSecurity
+@RequiredArgsConstructor
+@EnableReactiveMethodSecurity
 public class SecurityConfig {
 
     @Value("${jwt.secret}")
     private String secret;
+
+    private final JwtContextRepository jwtContextRepository;
 
     @Bean
     public SecurityWebFilterChain securityFilterChain(ServerHttpSecurity http) {
@@ -27,9 +34,9 @@ public class SecurityConfig {
                 .authorizeExchange(ex -> ex
                         .pathMatchers("/auth/**").permitAll()
                         .anyExchange().authenticated()
-                )
-                .oauth2ResourceServer(oauth -> oauth
-                        .jwt(jwt -> jwt.jwtDecoder(jwtDecoder()))
+                ).
+                oauth2ResourceServer(oauth -> oauth
+                        .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtContextRepository))
                 )
                 .build();
     }

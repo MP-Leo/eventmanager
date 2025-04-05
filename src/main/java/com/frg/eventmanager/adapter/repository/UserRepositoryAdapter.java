@@ -1,8 +1,9 @@
-package com.frg.eventmanager.infrastructure.adapter.repository;
+package com.frg.eventmanager.adapter.repository;
 
+import com.frg.eventmanager.adapter.repository.entity.UserEntity;
+import com.frg.eventmanager.adapter.repository.reactive.ReactiveUserRepository;
 import com.frg.eventmanager.domain.entity.User;
 import com.frg.eventmanager.domain.repository.UserRepository;
-import com.frg.eventmanager.infrastructure.adapter.repository.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
@@ -17,27 +18,23 @@ public class UserRepositoryAdapter implements UserRepository {
 
     @Override
     public Mono<User> findByEmail(String email) {
-
         return userRepository.findByEmail(email)
                 .map(UserEntity::toDomain);
     }
 
     @Override
     public Mono<Boolean> existsByEmail(String email) {
-
         return userRepository.existsByEmail(email);
     }
 
     @Override
     public Mono<User> save(User user) {
-
         return userRepository.save(UserEntity.fromDomain(user))
                 .map(UserEntity::toDomain);
     }
 
     @Override
     public Mono<User> findById(UUID id) {
-
         return userRepository.findById(id)
                 .map(UserEntity::toDomain);
     }

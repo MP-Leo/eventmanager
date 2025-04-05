@@ -1,18 +1,20 @@
 package com.frg.eventmanager.domain.repository;
 
 import com.frg.eventmanager.domain.entity.Event;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface EventRepository {
 
-    Optional<Event> findById(UUID id);
+    Mono<Event> findById(UUID id);
 
-    List<Event> findAllActive();
+    Flux<Event> findAllActive();
 
-    void save(Event event);
+    Flux<Event> findAll();
 
-    void delete(Event event);
+    Mono<Event> save(Event event);
+
+    Mono<Void> delete(UUID id);
 }

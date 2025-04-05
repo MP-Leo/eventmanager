@@ -1,6 +1,6 @@
-package com.frg.eventmanager.infrastructure.adapter.repository;
+package com.frg.eventmanager.adapter.repository.reactive;
 
-import com.frg.eventmanager.infrastructure.adapter.repository.entity.UserEntity;
+import com.frg.eventmanager.adapter.repository.entity.UserEntity;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Mono;
 
