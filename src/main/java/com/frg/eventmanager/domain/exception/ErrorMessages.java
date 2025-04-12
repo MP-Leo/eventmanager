@@ -6,8 +6,8 @@ public final class ErrorMessages {
 
     public static final String EVENT_NOT_FOUND = "Evento não encontrado.";
     public static final String USER_NOT_FOUND = "Usuário não encontrado.";
-    public static final String INVALID_CREDENTIALS = "Credenciais inválidas.";
-    public static final String EMAIL_ALREADY_REGISTERED = "Email já está em uso.";
-    public static final String UNAUTHORIZED_ACCESS = "Acesso não autorizado.";
+    public static final String SUBSCRIPTION_NOT_FOUND = "Inscrição não encontrada.";
+
+    public static final String SUBSCRIPTION_ALREADY_EXISTS = "A inscrição já foi realizada.";
 
 }

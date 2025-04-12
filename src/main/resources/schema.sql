@@ -21,3 +21,11 @@ CREATE TABLE events
     creator_name VARCHAR(100) NOT NULL
 );
 
+CREATE TABLE subscriptions
+(
+    subscription_id            UUID DEFAULT RANDOM_UUID() PRIMARY KEY,
+    user_id       UUID         NOT NULL,
+    event_id      UUID         NOT NULL,
+    subscribed_at TIMESTAMP    NOT NULL,
+    status        VARCHAR(20)  NOT NULL
+);
