@@ -8,8 +8,11 @@ import com.frg.eventmanager.domain.repository.EventRepository;
 import com.frg.eventmanager.infrastructure.mapper.EventMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -18,8 +21,8 @@ public class EventService implements EventUseCase {
     private final EventRepository eventRepository;
 
     @Override
-    public Mono<Event> getEvent(String id) {
-        return null;
+    public Mono<Event> getEvent(String title) {
+        return eventRepository.findByTitle(title);
     }
 
     @Override
@@ -29,18 +32,23 @@ public class EventService implements EventUseCase {
 
     @Override
     public Mono<Event> createEvent(EventRequest request, UserDTO user) {
-
         var event = EventMapper.requestToEntity(request, user);
         return eventRepository.save(event);
     }
 
     @Override
-    public Mono<Event> updateEvent(EventRequest request) {
+    public Mono<Event> finishEvent(UUID id) {
         return null;
     }
 
     @Override
-    public Mono<Event> deleteEvent(String id) {
-        return null;
+    @Transactional
+    public Mono<Event> cancelEvent(UUID id) {
+        return eventRepository.findById(id)
+                .switchIfEmpty(Mono.error(new RuntimeException()))
+                .flatMap(event -> {
+                    event.cancelEvent();
+                    return eventRepository.save(event);
+                });
     }
 }

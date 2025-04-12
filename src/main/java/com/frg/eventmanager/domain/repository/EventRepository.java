@@ -10,6 +10,8 @@ public interface EventRepository {
 
     Mono<Event> findById(UUID id);
 
+    Mono<Event> findByTitle(String title);
+
     Flux<Event> findAllActive();
 
     Flux<Event> findAll();

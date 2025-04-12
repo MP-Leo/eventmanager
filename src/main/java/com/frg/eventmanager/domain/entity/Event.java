@@ -69,6 +69,12 @@ public class Event {
         }
     }
 
+    public void finishEvent() {
+        if (this.status != EventStatus.CANCELLED){
+            this.status = EventStatus.FINISHED;
+        }
+    }
+
     public boolean isActive() {
         return this.status == EventStatus.ACTIVE;
     }
