@@ -27,7 +27,7 @@ public class EventRepositoryAdapter implements EventRepository {
     @Override
     public Mono<Event> findByTitle(String title) {
         return reactiveEventRepository.findByTitle(title)
-                .map(EventEntity::toDomain);
+                .mapNotNull(EventEntity::toDomain);
     }
 
     @Override

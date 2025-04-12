@@ -37,6 +37,12 @@ public class EventController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
+    @PatchMapping("/{id}/finish")
+    public Mono<Event> finishEvent(@PathVariable UUID id) {
+        return eventUseCase.finishEvent(id);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{id}/cancel")
     public Mono<Event> cancelEvent(@PathVariable UUID id) {
         return eventUseCase.cancelEvent(id);
