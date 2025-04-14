@@ -86,7 +86,7 @@ class EventServiceTest {
     @Test
     @DisplayName("[SUCCESS] Should create event")
     void shouldCreateEventSuccessfully() {
-        EventRequest request = ServiceTestFactory.createEventRequest(userDTO);
+        EventRequest request = ServiceTestFactory.createEventRequest();
         Event eventToSave = EventMapper.requestToEntity(request, userDTO);
 
         when(eventRepository.save(any())).thenReturn(Mono.just(eventToSave));

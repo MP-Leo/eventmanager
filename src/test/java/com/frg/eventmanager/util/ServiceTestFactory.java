@@ -36,7 +36,7 @@ public class ServiceTestFactory {
     }
 
 
-    public static EventRequest createEventRequest(UserDTO creator) {
+    public static EventRequest createEventRequest() {
         return EventRequest.builder()
                 .title("Technology Event")
                 .description("Random technology event")
